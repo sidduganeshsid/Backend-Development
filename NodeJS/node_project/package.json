@@ -1,0 +1,17 @@
+{
+  "name": "node_project",
+  "version": "1.0.0",
+  "description": "first node project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodeapp"
+  ],
+  "author": "sidduganesh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
