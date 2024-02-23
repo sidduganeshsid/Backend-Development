@@ -71,4 +71,10 @@ banking applications, IRCTC has the limited session
 
 LINKEDIN | GITHUB | INSTAGRAM
 
+students has to be good at
+dsa
+be
+system design
+ai
+
 

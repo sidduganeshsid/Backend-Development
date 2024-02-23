@@ -20,7 +20,7 @@
   */
  /**var process = (a,b) => {
      console.log("need tp process")
-     console.log(arguments)
+     console.log(arguments) //arguments object can't be used in it.
      return a*b
 
  }

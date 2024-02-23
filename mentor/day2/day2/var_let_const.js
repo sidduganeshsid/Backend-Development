@@ -18,9 +18,8 @@ console.log(i)
 }
 console.log(i) 
 
-
+//hoisted //behind the scene i is defined at the top
 console.log(i)
-
 var i =23 
 
 console.log(i) **/

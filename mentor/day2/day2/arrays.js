@@ -1,3 +1,9 @@
+/**
+ * =array is ordered collection of data
+ * =stores data based on index
+ * =it can store string, numerics, boolean, objects 
+ */
+
 /** arr = [1,2,3]
 
 console.log(typeof arr)
