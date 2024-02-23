@@ -1,3 +1,9 @@
+# TOPICS
+- 
+- 
+- 
+
+
 
 # Variables
 In JavaScript, variables are used to store data values. They are containers for holding information that can be referenced and manipulated throughout the execution of a program. Here's a basic overview of variables in JavaScript:
@@ -985,7 +991,7 @@ A comprehensive list of built-in array methods can be found in the official docu
 This is not an exhaustive list, and there are many more array methods available. You can explore the complete list and detailed documentation on the official Mozilla Developer Network (MDN) website or the ECMAScript specification. Additionally, new methods may be introduced in future ECMAScript versions, so it's always a good idea to stay updated with the latest developments in JavaScript.
 
 
-# Notes of Day 2
+# NOTES DAY2
 ```javascript
 
 /**
@@ -1524,4 +1530,208 @@ console.log(address)//error
 
 
 ```
+
+
+# NOTES DAY3
+First order functions or normal functions
+![alt text](image-6.png)
+
+Higher Order Functions
+=able to pass primitives,Objects and functions as parameters.
+=able to return primitives,objects and functions.
+![alt text](image-7.png)
+
+```javascript
+/**  function operation(operatorFn , a , b){
+
+    return operatorFn(a,b)
+
+}
+
+function add(a,b){
+    return a+b
+}
+
+let result = operation(add, 5 ,6)
+
+console.log(result) **/
+
+//anonymous
+function getGreetMethod(){
+    return function(){
+        console.log("Hello Students")
+    }
+}
+
+let greetFn = getGreetMethod()
+console.log(typeof greetFn)
+
+
+greetFn()
+//using higher order function we can do async process.
+```
+
+![alt text](image-8.png)
+```javascript
+/////////////
+//forEach_map_filter_reduce.js
+/**
+ * forEach method
+ */
+
+players = ["Sachin", "Virat", "Dhoni", "Rohit"] //iterate the all the elements and print in console
+
+players.forEach((player)=>console.log(player))
+
+
+/**
+ * map -> Creation of new transformed array
+ */
+
+arr = [1,2,3,4,5,6]
+
+cube_arr = arr.map(num => num**3)
+
+console.log(cube_arr)
+console.log(arr)
+
+
+/**
+ * filter
+ */
+
+let arr1 = [1,2,3,4,5,6,7,8,9,10]
+
+let even_arr = arr1.filter((num)=> num%2==0)
+console.log(even_arr)
+
+
+/**
+ * reduce
+ */
+
+const sum = [1,2,3,4,5,6,7,8,9,10].reduce((curr,next)=> curr+next)
+
+console.log(sum)
+```
+![alt text](image-9.png)
+```javascript
+////////////sync.js
+console.log("Hello from first line")
+
+
+function hello(){
+    console.log('Hello from inside the function')
+}
+
+hello()
+
+console.log("Hello from the last line")
+
+
+```
+
+inside the js every execution happens through the call stack
+call stack follows the LIFO
+![alt text](image-10.png)
+
+![alt text](image-11.png)
+```javascript
+////////////async.js
+console.log("Hello from the first line")
+
+setTimeout(()=>{
+    console.log('Hello from the call back fn')
+},3000)
+
+console.log("Hello from the last line")
+
+
+```
+![alt text](image-12.png)
+
+![alt text](image-13.png)
+```javascript
+////////////closures
+/** function hello(){
+    let name = "Vishwa"
+    console.log(name)
+}
+
+hello()
+
+console.log(name) **/
+
+
+function outerFn(){
+    let outerVar = " I am from the outer fn"
+    function innerFn(){
+        console.log(outerVar)
+    }
+
+    return innerFn
+}
+
+let fn = outerFn()
+
+fn()//this phenomenia is called as closure
+//closure is used for encapsulation.
+//rEg: customers entering tho shop : customersCount then closures is used.
+
+
+
+
+function customerCounter(){
+    let count = 0
+    return function(){
+        count++
+        console.log("New customer count is ", count)
+    }
+}
+
+let counter = customerCounter()
+
+counter()
+counter()
+counter()
+
+
+```
+![alt text](image-14.png)
+![alt text](image-15.png)
+
+![alt text](image-16.png)
+```javascript
+////////////
+
+
+function greet(name, callback){
+    const greeting = "Hello "+ name
+    callback(greeting)
+
+}
+
+
+function displayGreeting(message){
+    console.log(message)
+}
+
+greet("Vishwa", displayGreeting)
+
+/**
+ * Callback hell | Pyramid of doom
+ */
+
+
+getUser(function(user){
+    getPosts(user.id, function(post){
+        displayUserInfoAndPost(user, posts, function(){
+             console.log("User info and posts successfully displayed")
+        })
+    })
+})
+![alt text](image-17.png)
+
+```
+
 # end
