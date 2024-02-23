@@ -1392,10 +1392,12 @@ let my_arr = [15,40,1,13,2]
 my_arr.sort((a,b)=> b-a) //descending sorting
 
 console.log(my_arr)
-////////////////
+```
+
 ![alt text](image.png)
 ![alt text](image-1.png)
 ![alt text](image-2.png)
+```javascript
 //OBJECTS
 const user = {
 
@@ -1408,8 +1410,9 @@ const user = {
 //you have to know the key to gets its value
 console.log(user.name)//Vishwa // dot notation 
 console.log(user['name']) // bracket notation
-
+```
 ![alt text](image-3.png)
+```javascript
 /**
  * Adding data to the object
  */
@@ -1464,7 +1467,10 @@ console.log(new_person_1) //cloning the existing object and adding additinal fea
 //DESTRUCTURING
 //data stored mostly in the form of arrays and objects 
 //to fetch values out and assign to variables, destructuring is best suited
+```
 ![alt text](image-4.png)
+![alt text](image-5.png)
+```javascript
 /**
  * Destructuring in arrays
  */
@@ -1472,7 +1478,6 @@ console.log(new_person_1) //cloning the existing object and adding additinal fea
 /** */
 const nums = [1,2,3]
 
-![alt text](image-5.png)
 const [a,b,c,d] = [1,2,3]
 console.log(a)
 console.log(b)
