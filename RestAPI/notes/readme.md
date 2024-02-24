@@ -1,0 +1,3 @@
+# RestAPI Notes
+![alt text](<Screenshot 2024-02-25 020914.png>) ![alt text](<Screenshot 2024-02-25 020813.png>) ![alt text](<Screenshot 2024-02-25 020750.png>) ![alt text](<Screenshot 2024-02-25 020731.png>) ![alt text](<Screenshot 2024-02-25 020502.png>) ![alt text](<Screenshot 2024-02-25 020419.png>) ![alt text](<Screenshot 2024-02-25 020242.png>) ![alt text](<Screenshot 2024-02-25 020156.png>)
+JSON is file format which is language agnostic
