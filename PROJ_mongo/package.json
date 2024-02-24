@@ -1,0 +1,17 @@
+{
+  "name": "proj_mongo",
+  "version": "1.0.0",
+  "description": "This is demo to learn mongoose in nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mongoose"
+  ],
+  "author": "sidduganesh",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^8.2.0"
+  }
+}
