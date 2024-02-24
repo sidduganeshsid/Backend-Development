@@ -102,7 +102,7 @@ why BSON ? less space,
 1 documents supports size of 16mb. (not more than that.(limitation and fact.))
 
 
-real world entities are represented as documents (bson)
+real world entities are represented as documents (BSON)
 ![alt text](image-26.png)
 
 when data modeling is done. then relationships among it has to be represented then
@@ -118,4 +118,236 @@ when data modeling is done. then relationships among it has to be represented th
 transaction is little bit complemented is a limitation in reference
 ![alt text](image-32.png)
 
+///////////////////////////////////////////////////
+by default mongo db shell is on test database.
+```MongoDB
+newdb> use picollege;
+picollege> db.createCollection("students");
+> show collections;
+> db.students.renameCollection("students_new");
+picollege> db.students.remove({});
+picollege> db.students_new.drop();
+newdb> var user = {
+... name : "sidduganesh",
+... ip : "192.168.0.1",
+... lastLoginTime : 93838928834
+... };
+
+//document
+newdb> user;
+{ name: 'sidduganesh', ip: '192.168.0.1', lastLoginTime: 93838928834 }
+
+//document inserted in the collection
+newdb> db.students.insertOne(user);
+{
+  acknowledged: true,
+  insertedId: ObjectId('65d9a90acb8562ab522561ce')
+}
+
+//insert multiple docs
+newdb> db.students.insertMany([{name:"aakashganesh", ip : "127.0.0.1"},{name: "jyothi", work:"tailoring"}]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('65d9a9ddcb8562ab522561cf'),
+    '1': ObjectId('65d9a9ddcb8562ab522561d0')
+  }
+}
+
+//retrieving
+newdb> db.students.find();
+[
+  {
+    _id: ObjectId('65d9a90acb8562ab522561ce'),
+    name: 'sidduganesh',
+    ip: '192.168.0.1',
+    lastLoginTime: 93838928834
+  },
+  {
+    _id: ObjectId('65d9a9ddcb8562ab522561cf'),
+    name: 'aakashganesh',
+    ip: '127.0.0.1'
+  },
+  {
+    _id: ObjectId('65d9a9ddcb8562ab522561d0'),
+    name: 'jyothi',
+    work: 'tailoring'
+  }
+]
+
+//find by
+newdb> db.students.find({name: "jyothi"})
+[
+  {
+    _id: ObjectId('65d9a9ddcb8562ab522561d0'),
+    name: 'jyothi',
+    work: 'tailoring'
+  }
+]
+
+//inserting nested document
+newdb> var n_user = { name: "sid", job : { title: "programmer", salary: 25000}};
+
+newdb> db.students.insertOne(n_user);
+{
+  acknowledged: true,
+  insertedId: ObjectId('65d9ab66cb8562ab522561d1')
+}
+
+//filter based on the nested document
+newdb> db.students.find({'job.title' : 'programmer'});
+[
+  {
+    _id: ObjectId('65d9ab66cb8562ab522561d1'),
+    name: 'sid',
+    job: { title: 'programmer', salary: 25000 }
+  }
+]
+
+//filter based on first letter  (regular expression) /  /
+newdb> db.students.find({name: /j.*/})
+[
+  {
+    _id: ObjectId('65d9a9ddcb8562ab522561d0'),
+    name: 'jyothi',
+    work: 'tailoring'
+  }
+]
+
+//to analysis document structure 
+newdb> db.students.find().limit(2);
+[
+  {
+    _id: ObjectId('65d9a90acb8562ab522561ce'),
+    name: 'sidduganesh',
+    ip: '192.168.0.1',
+    lastLoginTime: 93838928834
+  },
+  {
+    _id: ObjectId('65d9a9ddcb8562ab522561cf'),
+    name: 'aakashganesh',
+    ip: '127.0.0.1'
+  }
+]
+
+//skip()
+newdb> db.students.find().skip(2);
+[
+  {
+    _id: ObjectId('65d9a9ddcb8562ab522561d0'),
+    name: 'jyothi',
+    work: 'tailoring'
+  },
+  {
+    _id: ObjectId('65d9ab66cb8562ab522561d1'),
+    name: 'sid',
+    job: { title: 'programmer', salary: 25000 }
+  }
+]
+
+//function or method
+// 1 means ascending order , -1 means descending order
+newdb> db.students.find().sort({name: 1});
+[
+  {
+    _id: ObjectId('65d9a9ddcb8562ab522561cf'),
+    name: 'aakashganesh',
+    ip: '127.0.0.1'
+  },
+  {
+    _id: ObjectId('65d9a9ddcb8562ab522561d0'),
+    name: 'jyothi',
+    work: 'tailoring'
+  },
+  {
+    _id: ObjectId('65d9ab66cb8562ab522561d1'),
+    name: 'sid',
+    job: { title: 'programmer', salary: 25000 }
+  },
+  {
+    _id: ObjectId('65d9a90acb8562ab522561ce'),
+    name: 'sidduganesh',
+    ip: '192.168.0.1',
+    lastLoginTime: 93838928834
+  }
+]
+//to know collection size
+newdb> db.students.find().count();
+4
+
+//mathematical operations
+newdb> db.students.find({'job.salary': {$lt: 300000}});
+[
+  {
+    _id: ObjectId('65d9ab66cb8562ab522561d1'),
+    name: 'sid',
+    job: { title: 'programmer', salary: 25000 }
+  }
+]
+
+//UPDATE
+
+
+/////doubt///
+picollege> db.students.drop;
+[Function: drop] AsyncFunction {
+  apiVersions: [ 1, Infinity ],
+  returnsPromise: true,
+  serverVersions: [ '0.0.0', '999.999.999' ],
+  topologies: [ 'ReplSet', 'Sharded', 'LoadBalanced', 'Standalone' ],
+  returnType: { type: 'unknown', attributes: {} },
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+
+
+```
+test and newdb are logically present it doesn't have the data in it.
+
+if data has, then shows >show dbs; dbs are shown
+until collections are not created inside the dbs it is present in logical presence, not doesn't shows the dbs
+![alt text](image-33.png)
+
+![alt text](image-34.png)
+![alt text](image-35.png)
+cmd's are bellow
+
+earlier times
+![alt text](image-36.png)
+-----------------------
+![alt text](image-37.png)
+
+
+![alt text](image-38.png)
+
+
+![alt text](image-39.png)
+
+BSON
+
+![alt text](image-41.png)
+
+![alt text](image-42.png)
+
+![alt text](image-43.png)
+
+![alt text](image-44.png)
+
+![alt text](image-45.png)
+![alt text](image-46.png)
+
+![alt text](image-47.png)
+
+![alt text](image-48.png)
+
+------------------
+other topics
+Aggregations
+Advanced topics
+How to optimize the mongoDB
+connecting the db.
 
